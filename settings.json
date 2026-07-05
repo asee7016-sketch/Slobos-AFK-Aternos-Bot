@@ -9,7 +9,7 @@
     "ip": "free-o5zh.aternos.me",
     "port":  42611,
     "version": "",
-    "try-creative": false
+    "try-creative": true
   },
   "position": {
     "enabled": true,
