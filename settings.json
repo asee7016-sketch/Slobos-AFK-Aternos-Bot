@@ -1,7 +1,7 @@
 {
   "name": "AFK Bot",
   "bot-account": {
-    "username": "Slobot00",
+    "username": "ownerbot",
     "password": "",
     "type": "offline"
   },
@@ -31,7 +31,7 @@
       "repeat": true,
       "repeat-delay": 120,
       "messages": [
-        "I'm a regular player",
+        "I'm a irfan",
         "welcome to my server",
         "I like to play Minecraft!"
       ]
@@ -39,7 +39,7 @@
     "chat-log": true,
     "auto-reconnect": true,
     "auto-reconnect-delay": 20,
-    "max-reconnect-delay": 120
+    "max-reconnect-delay": 25
   },
   "movement": {
     "enabled": true,
@@ -58,7 +58,7 @@
     }
   },
   "modules": {
-    "avoidMobs": true,
+    "avoidMobs": false,
     "combat": true,
     "beds": false,
     "chat": true,
