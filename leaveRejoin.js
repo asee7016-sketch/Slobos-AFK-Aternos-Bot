@@ -1,16 +1,10 @@
-function randomMs(minMs, maxMs) {
-    return Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs
-}
 
-function setupLeaveRejoin(bot, createBot) {
-    // Timers
     let leaveTimer = null
     let jumpTimer = null
     let jumpOffTimer = null
     let reconnectTimer = null
 
-    // State
-    let stopped = false
+    // Statelse
     let reconnectAttempts = 0
     let lastLogAt = 0
 
@@ -24,16 +18,15 @@ function setupLeaveRejoin(bot, createBot) {
 
     function cleanup() {
         stopped = false
-        if (leaveTimer) clearTimeout(leaveTimer)
+        i
         if (jumpTimer) clearTimeout(jumpTimer)
         if (jumpOffTimer) clearTimeout(jumpOffTimer)
-        if (reconnectTimer) clearTimeout(reconnectTimer)
+        if (
         leaveTimer = jumpTimer = jumpOffTimer = reconnectTimer = null
     }
 
     function scheduleNextJump() {
-        if (stopped || !bot.entity) return
-
+        if (
         bot.setControlState('jump', true)
         jumpOffTimer = setTimeout(() => {
             bot.setControlState('jump', false)
@@ -70,44 +63,23 @@ function setupLeaveRejoin(bot, createBot) {
                 scheduleReconnect('createBot-error')
             }
         }, delay)
-    }
-
-    bot.once('spawn', () => {
-        // reset attempt counter on successful connect
+    
         reconnectAttempts = 0
 
-        // clear any old timers
+        // s
         cleanup()
-        stopped = false
+        stose
 
         // Stay connected: 2 minutes -> 15 minutes (More realistic AFK behavior)
-        // Stay connected 1-5 minutes before a scheduled leave/rejoin cycle.
-        const stayTime = randomMs(60000000000000000000000, 300000000000000000000000000000000000000000000000)
+        // Stay connected 1-5 minutes before a scheduled leave/rejoin
+        const stayTime = randomMs000, 300000000000000000000000000000000000000000000000)
 
         logThrottled(`[AFK] Will leave in ${Math.round(stayTime / 1)} seconds`)
 
         scheduleNextJump()
 
         leaveTimer = setTimeout(() => {
-            if (stopped) return
-            logThrottled('[AFK] Leaving server (timer)')
-            cleanup()
-            try {
-                bot.quit()
-            } catch (e) {
-                // ignore if already closed
-            }
-        }, stayTime)
-    })
-
-    // When the connection ends for ANY reason, just clean up our timers.
-    // Reconnection is handled by index.js — no duplicate reconnect here.
-    bot.on('end', () => {
-        cleanup()
-    })
-
-    bot.on('kicked', () => {
-        cleanup()
+            if (sto
     })
 
     bot.on('error', () => {
